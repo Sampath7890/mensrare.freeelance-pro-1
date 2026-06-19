@@ -1,14 +1,21 @@
 {
-  "name": "rare-rat-ecommerce",
-  "version": "1.0.0",
-  "description": "Unified premium menswear storefront",
-  "main": "index.html",
+  "name": "mensrare-storefront",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host",
+    "analyze": "vite build --mode analyze"
   },
+  "dependencies": {},
   "devDependencies": {
-    "vite": "^5.0.0"
+    "@tailwindcss/forms": "^0.5.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.19"
   }
 }

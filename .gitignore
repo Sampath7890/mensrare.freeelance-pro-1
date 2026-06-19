@@ -4,4 +4,3 @@ dist/
 .env
 .gemini/
 .vscode/
-package-lock.json
