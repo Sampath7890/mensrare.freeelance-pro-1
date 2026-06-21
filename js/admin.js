@@ -5,7 +5,7 @@ import { addReview, deleteReview, getReviews } from './reviews.js';
 import { supabase } from './supabase.js';
 
 export function adminPage() {
-  const authenticated = true;
+  const authenticated = storage.get('adminAuth', false);
   return createPage(`
     <section class="mx-auto max-w-6xl px-6 pb-24 pt-32">
       <div id="admin-login" class="${authenticated ? 'hidden' : ''} mx-auto max-w-md glass-card p-8"><h1 class="mb-6 text-4xl">Admin Access</h1><form id="admin-login-form" class="space-y-4"><input id="admin-email" class="field" type="email" placeholder="Email" required><input id="admin-password" class="field" type="password" placeholder="Password" required><button class="btn-primary w-full">Sign in</button></form></div>

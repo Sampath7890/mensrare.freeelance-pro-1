@@ -41,13 +41,20 @@ export async function navigate() {
   try {
     const route = await resolveRoute(path);
     if (token !== routeToken) return;
-    const commit = () => container.replaceChildren(route.view);
-    if (document.startViewTransition) document.startViewTransition(commit);
-    else commit();
-    document.title = `${route.title} | Mensrare`;
-    updateActiveLinks(path);
-    scrollTo({ top: 0, behavior: 'auto' });
-    container.focus({ preventScroll: true });
+    const commit = () => {
+      container.replaceChildren(route.view);
+      document.title = `${route.title} | Mensrare`;
+      updateActiveLinks(path);
+      scrollTo({ top: 0, behavior: 'auto' });
+      container.focus({ preventScroll: true });
+    };
+
+    if (document.startViewTransition) {
+      await document.startViewTransition(commit).updateCallbackDone;
+    } else {
+      commit();
+    }
+
     if (route.after === 'shop') {
       const { getProducts } = await import('./products.js');
       const { initShop } = await import('./shop.js');
